@@ -20,7 +20,7 @@ class DataTabs(fnb.FlatNotebook):
 
         # Create the first tab and add it to the notebook
         tabOne = Datasets.DatasetPanel(self)
-        tabOne.SetBackgroundColour("Gray")
+        #tabOne.SetBackgroundColour("Gray")
         self.AddPage(tabOne, "TabOne")
 
         # Show how to put an image on one of the notebook tabs,
@@ -119,7 +119,7 @@ class SubplotTabs(fnb.FlatNotebook):
 
         # Create the first tab and add it to the notebook
         tabOne = DataPanel(self)
-        tabOne.SetBackgroundColour("Gray")
+        #tabOne.SetBackgroundColour("Gray")
         self.AddPage(tabOne, "TabOne")
 
 

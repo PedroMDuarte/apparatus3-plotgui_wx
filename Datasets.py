@@ -2,14 +2,15 @@ import wx
 import images
 import wx.lib.scrolledpanel as scrolled
 ########################################################################
-class DatasetPanel(scrolled.ScrolledPanel):
+
+class SetPanel(scrolled.ScrolledPanel):
     """
     This will be the first notebook tab
     """
     #----------------------------------------------------------------------
     def __init__(self, parent):
         """"""
-        super(DatasetPanel, self).__init__(parent=parent, id=wx.ID_ANY)
+        super(SetPanel, self).__init__(parent=parent, id=wx.ID_ANY)
 
         panel = self
 
@@ -210,3 +211,59 @@ class DatasetPanel(scrolled.ScrolledPanel):
         #self.SetSizer(sizer)
     def OnButton(self, evt):
         print "I want to plot something"
+
+class RawDataPanel(wx.Panel):
+    """
+    This will hold the raw data text output
+    """
+    #----------------------------------------------------------------------
+    def __init__(self, parent):
+        """"""
+        super(RawDataPanel, self).__init__(parent=parent, id=wx.ID_ANY)
+        panel = self
+
+        borderbox = wx.BoxSizer(wx.VERTICAL)
+        tc2 = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
+        borderbox.Add( tc2, proportion=1, flag=wx.ALL|wx.EXPAND, border=5)
+
+        sb2 = wx.StaticBox(panel, label="  Save Raw Data  ")
+        borderbox.Add( sb2, proportion=0, flag=wx.ALL|wx.EXPAND, border=5)
+
+class InfoPanel(wx.Panel):
+    """
+    This will hold the info text output
+    """
+    #----------------------------------------------------------------------
+    def __init__(self, parent):
+        """"""
+        super(InfoPanel, self).__init__(parent=parent, id=wx.ID_ANY)
+        panel = self
+
+        borderbox = wx.BoxSizer(wx.VERTICAL)
+        tc2 = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
+        borderbox.Add( tc2, proportion=1, flag=wx.ALL|wx.EXPAND, border=5)
+
+        sb2 = wx.StaticBox(panel, label="  Hello  ")
+        borderbox.Add( sb2, proportion=0, flag=wx.ALL|wx.EXPAND, border=5)
+
+class DatasetPanel(wx.Notebook):
+    """
+    This will be the Dataset notebook
+    """
+    #----------------------------------------------------------------------
+    def __init__(self, parent):
+        """"""
+        super(DatasetPanel, self).__init__(parent=parent, id=wx.ID_ANY,
+                                      style = wx.BK_DEFAULT )
+
+        tabOne = SetPanel(self) 
+        self.AddPage(tabOne,"Set")
+
+        tabTwo = RawDataPanel(self)
+        self.AddPage(tabTwo,"Raw Data") 
+
+        tabThree = InfoPanel(self)
+        self.AddPage(tabThree,"Info") 
+
+       
+
